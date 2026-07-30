@@ -64,8 +64,8 @@ Top 3 Marcadores Exactos:
 * `group_stage_scanner.py`: **Financial Analyzer.** Scans group stage matchups to detect mathematical Edge and recommends bets using the Kelly Criterion.
 
 ### Data Sources (Pipeline)
-* `results.csv`: Historical dataset of official international matches (friendlies excluded).
-* `shootouts.csv`: Historical log of penalty shootouts to resolve ties in knockout stages.
+The core datasets for this project are sourced from the data science community on Kaggle:
+* `results.csv` & `shootouts.csv`: Historical dataset of official international football matches from 1872 to present, originally compiled by [Mart Jürisoo on Kaggle](https://www.kaggle.com/datasets/martj42/international-football-results-from-1872-to-2017).
 * `ranking_fifa.csv`: Global scoring dataset used as a base strength multiplier.
 
 ### Audits & Backtesting
