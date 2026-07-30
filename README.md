@@ -1,34 +1,33 @@
 # 🏆 World Cup 2026 Stochastic Predictor
 
-Motor predictivo de Inteligencia Artificial desarrollado en Python para simular y proyectar los resultados de la Copa del Mundo 2026. El modelo abandona las heurísticas tradicionales en favor de una arquitectura estocástica rigurosa basada en estadística bayesiana, distribuciones bivariadas y factores de decaimiento temporal.
+An AI predictive engine developed in Python to simulate and forecast the outcomes of the 2026 FIFA World Cup. This model abandons traditional heuristics in favor of a rigorous stochastic architecture based on Bayesian statistics, bivariate distributions, and time decay factors.
 
-## 🧠 Arquitectura Matemática
+## 🧠 Mathematical Architecture
 
-El núcleo del ecosistema se basa en los siguientes principios estadísticos:
-* **Matriz de Poisson Bivariada:** Cálculo de probabilidades de Goles Esperados (xG) aislando la fuerza de ataque y defensa neutral de cada selección frente al promedio global histórico de la FIFA.
-* **Factor de Corrección Dixon-Coles (ρ = -0.13):** Ajuste algorítmico crítico para corregir la subestimación de empates (0-0, 1-1) inherente a los modelos de Poisson puros en el fútbol de selecciones.
-* **Time Decay (Decaimiento Exponencial):** Ponderación dinámica que otorga mayor relevancia matemática a los resultados recientes para capturar el *momentum* real de las selecciones, penalizando datos antiguos.
-* **Localía Dinámica (HFA):** Ajuste de ventaja de campo (Home Field Advantage) específico inyectado a los anfitriones (México, Estados Unidos, Canadá).
+The core of this ecosystem is built upon the following statistical principles:
+* **Bivariate Poisson Matrix:** Expected Goals (xG) probability calculation that isolates the neutral attacking and defensive strengths of each national team against the FIFA historical global average.
+* **Dixon-Coles Correction Factor (ρ = -0.13):** A critical algorithmic adjustment to correct the underestimation of low-scoring draws (e.g., 0-0, 1-1) inherent in pure Poisson models for international football.
+* **Time Decay (Exponential Weighting):** A dynamic weighting system that mathematically prioritizes recent match results to capture the true *momentum* of the teams, heavily penalizing older data.
+* **Home Field Advantage (HFA):** A dynamic field advantage multiplier specifically injected for the host nations (Mexico, United States, Canada).
 
-## 📂 Ecosistema de Módulos
+## 📂 Module Ecosystem
 
-El proyecto está modularizado en 5 scripts ejecutables, diseñados para diferentes etapas del análisis y consumo de datos:
+The project is modularized into 5 executable scripts, engineered for different analysis stages and data consumption:
 
-1. **`tournament_simulator.py`**: Motor de rastreo en vivo (*Live Tracker*). Lee resultados reales dinámicamente desde la base de datos y simula el resto del torneo en tiempo real, adaptándose a llaves predefinidas.
-2. **`official_simulator.py`**: Simulador puro desde cero. Ejecuta el torneo completo utilizando un algoritmo de *Backtracking* para realizar la asignación perfecta de los mejores terceros lugares, cumpliendo estrictamente con el reglamento de la FIFA.
-3. **`knockout_scanner.py`**: Escáner de auditoría táctica de terminal. Analiza partidos individuales de eliminación directa, calculando probabilidades de prórroga, cruzando la efectividad histórica de penales y arrojando el Top 10 de marcadores exactos.
-4. **`group_stage_scanner.py`**: Analizador financiero para Fase de Grupos. Escanea cruces y compara las probabilidades del modelo contra las cuotas de las casas de apuestas para detectar el *Edge* matemático y recomendar gestión de banca mediante el **Criterio de Kelly**.
-5. **`match_scanner.py`**: Módulo base refactorizado. Actúa como una función pura que devuelve objetos JSON/Diccionarios, diseñada específicamente para ser consumida por un *Frontend* o una API web en el futuro.
+1. **`tournament_simulator.py`** *(Live Tracker)*: Dynamically reads real-world results from the dataset and simulates the remainder of the tournament in real-time, adapting to predefined brackets.
+2. **`official_simulator.py`** *(Pure Simulator)*: Executes the entire tournament from scratch. It features a custom **Backtracking algorithm** for the perfect allocation of the best third-placed teams, strictly complying with the official FIFA rulebook.
+3. **`knockout_scanner.py`** *(CLI Tactical Audit)*: Analyzes individual knockout stage matches. It calculates extra-time probabilities, integrates historical penalty shootout effectiveness, and outputs the Top 10 most probable exact scores.
+4. **`group_stage_scanner.py`** *(Financial Analyzer)*: Scans group stage matchups and compares the model's probabilities against bookmaker odds to detect mathematical *Edge*, recommending bankroll management via the **Kelly Criterion**.
+5. **`match_scanner.py`** *(Refactored Core)*: Acts as a pure function returning JSON/Dictionary objects. It is specifically designed to be consumed by a web Frontend or a REST API in future iterations.
 
-## 📊 Fuentes de Datos (Data Pipeline)
-* `results.csv`: Histórico de partidos internacionales oficiales (limpio de amistosos).
-* `shootouts.csv`: Registro histórico de tandas de penales para la resolución de empates en fases KO.
-* `ranking_fifa.csv`: Puntuación global utilizada como factor multiplicador de fuerza base.
+## 📊 Data Pipeline
+* `results.csv`: Historical dataset of official international matches (filtered to exclude friendlies).
+* `shootouts.csv`: Historical log of penalty shootouts to resolve ties in knockout stages.
+* `ranking_fifa.csv`: Global scoring dataset used as a base strength multiplier.
 
-## 🎯 Precisión y Validación (Edge)
-El objetivo de este modelo no es la clarividencia determinista, sino la detección de ineficiencias en los mercados de pronósticos (*Value Betting*). Al aislar la fuerza neutral y aplicar el factor Dixon-Coles, el modelo busca de manera consistente un **Valor Esperado Positivo (+EV)**. Las métricas de éxito se evalúan iterando el Criterio de Kelly sobre el diferencial entre la cuota justa del modelo (Fair Odd) y la cuota del mercado comercial.
+## 🎯 Accuracy and Validation (Edge)
+The objective of this model is not deterministic clairvoyance, but rather the detection of inefficiencies in sports forecasting markets (*Value Betting*). By isolating neutral strength and applying the Dixon-Coles factor, the model consistently seeks a **Positive Expected Value (+EV)**. Success metrics are evaluated by iterating the Kelly Criterion over the differential between the model's Fair Odd and the commercial market odds.
 
-## 🚀 Stack Tecnológico
-* **Lenguaje:** Python 3.x
-* **Librerías Core:** `pandas` (Manipulación de DataFrames), `numpy` (Cálculo matricial), `scipy.stats` (Funciones de masa de probabilidad estocástica).3.x
-* **Librerías Core:** `pandas` (Manipulación de DataFrames), `numpy` (Cálculo matricial), `scipy.stats` (Funciones de masa de probabilidad).
+## 🚀 Tech Stack
+* **Language:** Python 3.x
+* **Core Libraries:** `pandas` (Data manipulation), `numpy` (Matrix operations), `scipy.stats` (Stochastic probability mass functions).
