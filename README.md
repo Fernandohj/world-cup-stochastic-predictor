@@ -67,3 +67,6 @@ Top 3 Marcadores Exactos:
 * `results.csv`: Historical dataset of official international matches (friendlies excluded).
 * `shootouts.csv`: Historical log of penalty shootouts to resolve ties in knockout stages.
 * `ranking_fifa.csv`: Global scoring dataset used as a base strength multiplier.
+
+### Audits & Backtesting
+* `audits/`: Directory containing Excel performance reports (`Auditoria_Jornada_1.xlsx`, etc.). These files document the model's backtesting, tracking its real-world predictive accuracy, hit rates, and Kelly Criterion profitability across the group stage matchdays.
